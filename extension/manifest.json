@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Recall Browser Bridge",
+  "version": "1.2.0",
+  "description": "Securely bridges your local browser history with the Recall Personal Intelligence App.",
+  "permissions": [
+    "history"
+  ],
+  "host_permissions": [
+    "https://integrate.api.nvidia.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://localhost/*",
+        "http://127.0.0.1/*",
+        "https://*.vercel.app/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Recall Bridge"
+  }
+}
